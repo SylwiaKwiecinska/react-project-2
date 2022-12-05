@@ -1,10 +1,10 @@
 import React from "react";
 
 
-function Option({currency},{value}) {
+function Option({id},{value}) {
     return (
     
-        <option id={currency} value = {value}>{currency}</option>
+        <option id={id} value = {value}>{id}</option>
                 
     )
 }

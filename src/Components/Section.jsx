@@ -22,8 +22,8 @@ function Section() {
         <div className="div_converter main">
             <input type="number" id="inputValue" className="currency_value_from_input" min="0"/>
             <select id="selectCurrency">
-               {currencyOption.map(currency => (
-                <Option id={currency} value={value}>{currency}</Option>
+               {currencyOption.map(({id, value}) => (
+                <Option id={id} value={value}>{id}</Option>
                ))}
             </select>
            <Button/>

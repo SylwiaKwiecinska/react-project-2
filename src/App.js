@@ -11,9 +11,7 @@ function App() {
       <Logo/>
       <Header/>
       <Section/>
-      <Option title="EUR"/>
-      <Option title="USD"/>
-      <Option title="CHf"/>
+      <Option/>
       <Footer/>
     </div>
   );
