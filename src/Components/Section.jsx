@@ -1,20 +1,19 @@
+import Button from "./Button";
 import Option from "./Option";
+import Span from "./Span";
 
 const currencyOption = [
     {
         id: "EUR",
-        value: "eur",
-        title: "EUR"
+        value: "eur"
     },
     {
         id: "USD",
-        value: "usd",
-        title: "USD"
+        value: "usd"
     },
     {
         id: "CHF",
-        value: "chf",
-        title: "CHF"
+        value: "chf"
     }
     ];
 
@@ -24,13 +23,11 @@ function Section() {
             <input type="number" id="inputValue" className="currency_value_from_input" min="0"/>
             <select id="selectCurrency">
                {currencyOption.map(currency => (
-                <Option id={currency} value={value} title={currency}/>
+                <Option id={currency} value={value}>{currency}</Option>
                ))}
             </select>
-            <button id="convert" className="btn">Convert</button>
-            <p>is:</p>
-            <span type="number" id="spanValue" className="span"></span>
-            <span className="span">PLN</span>
+           <Button/>
+            <Span/>
 
         </div>
     )
