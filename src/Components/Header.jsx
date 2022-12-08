@@ -1,6 +1,6 @@
 function Header() {
     return (
-        <header className="main">
+        <header>
             <div className="div_text">Currency converter</div>
         </header>
     )

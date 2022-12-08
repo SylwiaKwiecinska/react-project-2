@@ -11,7 +11,6 @@ function App() {
       <Logo/>
       <Header/>
       <Section/>
-      <Option/>
       <Footer/>
     </div>
   );

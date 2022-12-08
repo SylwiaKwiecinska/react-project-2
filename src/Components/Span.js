@@ -1,10 +1,10 @@
 import React from "react";
 
-function Span() {
+function Span({value}) {
     return (
-        <div className="div_converter main">
+        <div className="div_converter">
             <p>is:</p>
-            <span type="number" id="spanValue" className="span"></span>
+            <span type="number" id="spanValue" className="span">{value}</span>
             <span className="span">PLN</span>
         </div>
         

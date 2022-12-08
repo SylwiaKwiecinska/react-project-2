@@ -1,33 +1,35 @@
 import Button from "./Button";
 import Option from "./Option";
 import Span from "./Span";
+import { useState, useEffect } from 'react';
 
-const currencyOption = [
-    {
-        id: "EUR",
-        value: "eur"
-    },
-    {
-        id: "USD",
-        value: "usd"
-    },
-    {
-        id: "CHF",
-        value: "chf"
-    }
-    ];
+const currencyOption = ["EUR", "USD", "CHF"];
 
 function Section() {
+    const [amount, setAmount] = useState(0);
+    const [currencyValue, setCurrencyValue] = useState(0);
+    const [result, setResult] = useState(0);
+
+    useEffect(() => {
+        updateCurrentlySelectedCurrencyValue(currencyOption[0]);
+    });
+
+    const updateCurrentlySelectedCurrencyValue = (currencyName) => {
+        fetch(`http://api.nbp.pl/api/exchangerates/rates/a/${currencyName}`)
+        .then((response) => response.json())
+        .then((data) => setCurrencyValue(data.rates[0].mid));
+    };
+
     return (
-        <div className="div_converter main">
-            <input type="number" id="inputValue" className="currency_value_from_input" min="0"/>
-            <select id="selectCurrency">
-               {currencyOption.map(({id, value}) => (
-                <Option id={id} value={value}>{id}</Option>
+        <div className="div_converter">
+            <input type="number" id="inputValue" className="currency_value_from_input" min="0" onChange={ (event) => setAmount(event.target.value) }/>
+            <select id="selectCurrency" onChange={(event) => updateCurrentlySelectedCurrencyValue(event.target.value)}>
+               {currencyOption.map((option, index) => (
+                <Option id={option} value={option} key={index}>{option}</Option>
                ))}
             </select>
-           <Button/>
-            <Span/>
+            <input type="button" value="Convert" onClick={ () => (setResult(amount * currencyValue)) }/>
+            <Span value={result.toFixed(2)} />
 
         </div>
     )
