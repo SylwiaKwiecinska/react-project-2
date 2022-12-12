@@ -1,4 +1,3 @@
-import Button from "./Button";
 import Option from "./Option";
 import Span from "./Span";
 import { useState, useEffect } from 'react';
@@ -7,12 +6,12 @@ const currencyOption = ["EUR", "USD", "CHF"];
 
 function Section() {
     const [amount, setAmount] = useState(0);
-    const [currencyValue, setCurrencyValue] = useState(0);
+    const [currencyValue, setCurrencyValue] = useState(currencyOption[0]);
     const [result, setResult] = useState(0);
 
     useEffect(() => {
-        updateCurrentlySelectedCurrencyValue(currencyOption[0]);
-    });
+        updateCurrentlySelectedCurrencyValue(currencyValue);
+    },[currencyValue]);
 
     const updateCurrentlySelectedCurrencyValue = (currencyName) => {
         fetch(`http://api.nbp.pl/api/exchangerates/rates/a/${currencyName}`)
@@ -28,7 +27,7 @@ function Section() {
                 <Option id={option} value={option} key={index}>{option}</Option>
                ))}
             </select>
-            <input type="button" value="Convert" onClick={ () => (setResult(amount * currencyValue)) }/>
+            <input type="button" value="Convert" onClick={ () => (setResult(amount * currencyValue))} />
             <Span value={result.toFixed(2)} />
 
         </div>
