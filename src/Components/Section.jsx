@@ -14,7 +14,7 @@ function Section() {
     },[currencyValue]);
 
     const updateCurrentlySelectedCurrencyValue = (currencyName) => {
-        fetch(`http://api.nbp.pl/api/exchangerates/rates/a/${currencyName}`)
+        fetch(`https://api.nbp.pl/api/exchangerates/rates/a/${currencyName}`)
         .then((response) => response.json())
         .then((data) => setCurrencyValue(data.rates[0].mid));
     };
