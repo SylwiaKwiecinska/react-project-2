@@ -18,10 +18,9 @@ header {
   justify-content: center;
 }
 .logo {
+  background-image: url(Components/Assets/logo.webp);
   height: 240px;
   width: 240px;
-  background-image: url(logo.webp);
-  
 }
 .div_text {
   padding-top: 50px;
@@ -30,7 +29,6 @@ header {
   font-weight: bolder;
 }
 .div_converter {
-
   zoom: 200%;
   display: flex;
   flex-direction: row;
