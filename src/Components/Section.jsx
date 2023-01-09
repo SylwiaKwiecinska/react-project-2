@@ -21,7 +21,19 @@ function Section() {
 
     return (
         <div className="div_converter">
-            <input type="number" id="inputValue" className="currency_value_from_input" min="0" onChange={ (event) => setAmount(event.target.value) }/>
+            <input type="number" id="inputValue" className="currency_value_from_input" min="0" onKeyDown={
+(event) => {
+    const regex = new RegExp(/^[0-9]*\.?[0-9]*$/);
+    if(!(regex.test(event.key) || 'Backspace' === event.key)) {
+        event.preventDefault();     
+    }
+}
+            } 
+            onChange={ (event) => 
+                { 
+                    setAmount(event.target.value);
+                }
+            }/>
             <select id="selectCurrency" onChange={(event) => updateCurrentlySelectedCurrencyValue(event.target.value)}>
                {currencyOption.map((option, index) => (
                 <Option id={option} value={option} key={index}>{option}</Option>
